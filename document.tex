@@ -11,6 +11,8 @@
 
 % load personal package
 \usepackage[rmarticle,math]{./cstyle}
+\usepackage{stackengine}
+\newcommand{\ubar}[1]{{\stackunder[1.2pt]{$#1$}{\rule{.8ex}{.075ex}}}}
 
 % configure KOMA-Script
 \KOMAoptions{DIV=last}
@@ -32,5 +34,16 @@
 \subfile{./tex/A_00/title.tex}
 
 \newpage
+
+\subfile{./tex/B_00/task1.tex}
+\newpage
+
+\subfile{./tex/B_00/task2.tex}
+\newpage
+
+\subfile{./tex/B_00/task3.tex}
+\newpage
+
+\subfile{./tex/B_00/task4.tex}
 
 \end{document}
