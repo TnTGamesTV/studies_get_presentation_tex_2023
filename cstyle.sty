@@ -1,0 +1,181 @@
+% packages
+\RequirePackage{charter,helvet}
+\RequirePackage[charter]{mathdesign}
+\RequirePackage[T1]{fontenc}				% umlaut fonts
+\RequirePackage[utf8]{inputenc}				% umlaut input
+\RequirePackage{babel}						% language adjustments
+\RequirePackage[
+	onehalfspacing,
+	nodisplayskipstretch]{setspace}			% onehalfspacing
+	\setstretch{1}						% stretch for equations
+%\RequirePackage[
+%	backend=biber,
+%	style=iso-authoryear
+%]{biblatex}									% bibliography iso style
+\RequirePackage[
+	backend=biber,
+	style=numeric
+]{biblatex}									% bibliography numbered style
+\RequirePackage[fleqn]{mathtools}					% math symbols
+\usepackage[b]{esvect}						% better vectors
+\usepackage[
+	column=O,
+	math
+]{cellspace}								% math table columns
+\RequirePackage{makecell}					% multi-line cells
+	% table formatting (avoiding clash of lines and text):
+	\setlength\cellspacetoplimit{2pt}	
+	\setlength\cellspacebottomlimit{2pt}
+\RequirePackage{multirow}					% table cells spanning multiple rows
+\RequirePackage{graphicx}					% graphics
+\RequirePackage[
+	plainheadsepline,
+	headsepline
+]{scrlayer-scrpage}							% header and footer
+\RequirePackage[table]{xcolor}				% colour
+\RequirePackage{longtable}					% multi-page tables
+\RequirePackage[inline]{enumitem}			% list environments
+\RequirePackage{float}						% more control over floats
+\RequirePackage{caption}					% caption adjustments
+\RequirePackage{csquotes}					% quotations, required for babel
+\RequirePackage{lipsum}						% filler text
+\RequirePackage{booktabs}					% professional tables
+\usepackage{geometry}						% page dimensions
+	\AfterCalculatingTypearea{
+		\geometry{
+			margin=2.5cm
+			}
+		}
+	\recalctypearea							% avoid clashes with KOMA Script
+\RequirePackage{icomma}						% intelligent comma
+\RequirePackage{microtype}					% avoiding overfull hboxes (among other)
+
+
+% OPTIONS
+% rmreport: reports with Charter font
+\DeclareOption{rmreport}{
+	\renewcommand{\familydefault}{\rmdefault}
+	\addtokomafont{disposition}{\rmfamily}
+	\addtokomafont{chapter}{\Large}
+  	% space between header and chapter heading
+  	\renewcommand*{\chapterheadstartvskip}{\vspace*{-0.75\baselineskip}}
+  	\renewcommand*{\chapterheadendvskip}{\vspace*{1\baselineskip}}
+	% configuration of header and footer
+	\pagestyle{scrheadings}
+		\ihead[\rmfamily \bfseries \upshape \headmark]{\rmfamily \bfseries \upshape \headmark}
+		\chead[]{}
+		\ohead[]{}
+		\ifoot[]{}
+		\cfoot[]{}
+		\ofoot[\rmfamily \pagemark]{\rmfamily \pagemark}
+		\automark[]{chapter}
+}
+% sfreport: reports with Helvet font
+\DeclareOption{sfreport}{
+	\renewcommand{\familydefault}{\sfdefault}
+	\addtokomafont{disposition}{\sffamily}
+	\setkomafont{chapter}{\Large}
+  	% space between header and chapter heading
+  	\renewcommand*{\chapterheadstartvskip}{\vspace*{-0.75\baselineskip}}
+  	\renewcommand*{\chapterheadendvskip}{\vspace*{1\baselineskip}}
+	% configuration of header and footer
+	\pagestyle{scrheadings}
+		\ihead[\sffamily \bfseries \upshape \headmark]{\sffamily \bfseries \upshape \headmark}
+		\chead[]{}
+		\ohead[]{}
+		\ifoot[]{}
+		\cfoot[]{}
+		\ofoot[\sffamily \pagemark]{\sffamily \pagemark}
+		\automark[]{chapter}
+}
+% rmarticle: articles with Charter font
+\DeclareOption{rmarticle}{
+	\renewcommand{\familydefault}{\rmdefault}
+	\addtokomafont{disposition}{\rmfamily}
+}
+% sfarticle: articles with Helvet font
+\DeclareOption{sfarticle}{
+	\renewcommand{\familydefault}{\sfdefault}
+	\addtokomafont{disposition}{\sffamily}
+}
+
+% math: math documents
+\DeclareOption{math}{
+	\everymath{\displaystyle}
+}
+\ExecuteOptions{}
+\ProcessOptions\relax
+
+
+% rest of font settings
+\addtokomafont{section}{\large}
+\addtokomafont{subsection}{\normalsize}
+\addtokomafont{subsubsection}{\normalsize}
+\addtokomafont{caption}{\small}
+
+% formulas
+\RequirePackage{fleqn}			% flush left formulas
+\setlength{\mathindent}{1cm}	% formula indentation
+
+% other commands
+\captionsetup{
+	format=plain,
+	indention=0cm,
+	justification=RaggedRight,
+	singlelinecheck=false,
+	font=footnotesize,
+	labelfont=bf,
+	margin={1cm,0cm}
+}										% caption setup
+\mathchardef\mhyphen="2D				% hyphen in math mode
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}		% command for absolutes
+\DeclarePairedDelimiter\norm{\lVert}{\rVert}	% command for absolutes
+\providecommand\arrow{\(\rightarrow\)}	% simpler command for arrows in text mode
+\providecommand{\foreign}{\textit}		% italics for foreign words
+\providecommand{\mbeq}{\overset{!}{=}}	% command for must be equal (equal sign with exclamation mark)
+
+% italicisation in mathmode
+\providecommand{\mt}{\text}				% shorter text command for math
+\providecommand{\cind}[1]{_{\textrm{#1}}}	% upright index
+\providecommand{\dif}{\text{d}}			% quick roman differential
+\providecommand{\upe}{\text{e}}			% quick roman e, to be used for mathematical constant
+\providecommand{\upi}{\text{i}}			% quick roman i, to be used for mathematical constant
+\RequirePackage{upgreek}					% upright greek letters
+\providecommand\grad{\text{grad\,}}		% command for gradient
+
+% labels for itemize environment
+\renewcommand{\labelitemii}{\(\circ\)}
+\renewcommand{\labelitemiii}{\(\diamond\)}
+\renewcommand{\labelitemiv}{\textendash}
+
+% column types with math mode enabled
+\newcolumntype{C}{>{\(}Oc<{\)}}
+\newcolumntype{L}{>{\(}Ol<{\)}}
+\newcolumntype{R}{>{\(}Or<{\)}}
+
+% colour definitions
+\definecolor{fhmint}{RGB}{0,177,172}
+\definecolor{pale-gray}{gray}{0.95}
+\definecolor{light-gray}{gray}{0.8}
+
+% avoid overfull hboxes
+%\setlength{\emergencystretch}{2em}
+
+% siunitx
+\RequirePackage{siunitx}				% numbers and units
+\DeclareSIUnit{\calorie}{cal}			% unit cal
+\DeclareSIUnit{\Calorie}{\kilo\calorie}	% unit kcal
+\DeclareSIUnit{\cent}{ct}
+\sisetup{							% options for siunitx
+	exponent-product = \cdot,
+	per-mode=fraction,
+	detect-all=true,
+	range-units=single,
+	range-phrase=\,\textendash\,,
+}
+
+% packages to load last
+\RequirePackage{subfiles}				% modular document structure
+\RequirePackage[hidelinks]{hyperref}	% hyperlinks
+
+\endinput

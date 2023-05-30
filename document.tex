@@ -1,0 +1,36 @@
+\documentclass[
+	ngerman,			% german documents
+	fontsize=11pt,
+	paper=a4,			% a4paper
+	parskip=half-,		% avoids loading parskip package
+	pagesize,
+	twoside=false,		% onesided document, otherwise true
+%	BCOR=[Wert]mm,		% Bindekorrektur (linker Rand, für zu bindende Dokumente)
+	DIV=calc			% Satzspiegelberechnung	
+]{scrartcl}
+
+% load personal package
+\usepackage[rmarticle,math]{./cstyle}
+
+% configure KOMA-Script
+\KOMAoptions{DIV=last}
+
+% german documents
+\sisetup{
+	locale = DE
+}											% german siunitx
+\addto\captionsngerman{
+  \renewcommand{\figurename}{Abb.}
+  \renewcommand{\tablename}{Tab.}
+}											% abbreviations for tables and figures
+
+
+
+\begin{document}
+
+% titlepage (select fitting) and toc
+\subfile{./tex/A_00/title.tex}
+
+\newpage
+
+\end{document}
