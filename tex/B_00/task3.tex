@@ -1,0 +1,56 @@
+\documentclass[../../document.tex]{subfiles}
+\begin{document}
+
+\section*{Aufgabe 3}
+
+\subsection*{a)}
+
+\begin{equation*}
+    \begin{split}
+        \ubar{Z\cind{m}} &= R + j \omega * L \Rightarrow \sqrt[]{R^2 + \omega^2 * L^2} * \upe^{j \arctan{\frac{\omega * L}{R}}} = \sqrt[]{R^2 + \omega^2 * L^2} * \upe^{j \varphi}\\
+        \hat{i}\cind{N} &= \frac{\hat{u}\cind{N}}{\ubar{Z\cind{m}}} = \frac{\sqrt[]{2} * \SI{115}{\volt} * \upe^{j \varphi}}{\sqrt[]{R^2 + \omega^2 * L^2} * \upe^{j \varphi}} = \frac{\sqrt[]{2} * \SI{115}{\volt}}{\sqrt[]{R^2 + \omega^2 * L^2}} * \upe^{-j \varphi}\\
+    \end{split}
+\end{equation*}
+
+\subsection*{b)}
+
+\subsubsection*{Scheinleistung}
+
+\begin{equation*}
+    \begin{split}
+        \ubar{S} &= \frac{1}{2} * \hat{\ubar{u}} * \hat{\ubar{i}}^*\\
+        &= \frac{1}{2} * \sqrt[]{2} * \SI{115}{\volt} * \frac{\sqrt[]{2} * \SI{115}{\volt}}{\sqrt[]{R^2 + \omega^2 * L^2}} * \upe^{+j \varphi} = \frac{1}{2} * \SI{115}{\volt} * \frac{\SI{115}{\volt}}{\sqrt[]{R^2 + \omega^2 * L^2}} * \upe^{j \varphi}\\
+        &\Rightarrow \frac{{U\cind{eff}}^2}{ \left\lvert Z \right\rvert } * \upe^{j \varphi}\\
+        S &= \left\lvert S \right\rvert = \frac{{U\cind{eff}}^2}{ \left\lvert Z \right\rvert } = \frac{{\SI{115}{\volt}}^2}{ \sqrt[]{R^2 + \omega^2 * L^2 }} \left[VA\right]\\
+    \end{split}
+\end{equation*}
+
+\subsubsection*{Wirkleistung}
+
+\begin{equation*}
+    \begin{split}
+        P &= \frac{{U\cind{eff}}^2}{Z} * \cos{\varphi} = \frac{{\SI{115}{\volt}}^2}{ \sqrt[]{R^2 + \omega^2 * L^2 }} * \cos{\arctan{\frac{\omega * L}{R}}} \left[W\right]\\
+    \end{split}
+\end{equation*}
+
+\subsubsection*{Blindleistung}
+
+\begin{equation*}
+    \begin{split}
+        Q &= \frac{{U\cind{eff}}^2}{Z} * \sin{\varphi} = \frac{{\SI{115}{\volt}}^2}{ \sqrt[]{R^2 + \omega^2 * L^2 }} * \sin{\arctan{\frac{\omega * L}{R}}} \left[var\right]\\
+    \end{split}
+\end{equation*}
+
+\subsubsection*{Leistungsfaktor}
+
+\begin{equation*}
+    \begin{split}
+        \lambda &= \frac{P}{S} = \cos{\varphi} = \cos{\arctan{\frac{\omega * L}{R}}}\\
+    \end{split}
+\end{equation*}
+
+\subsection*{c)}
+
+In manchen Teilen der Welt (z.B. die USA/Japan) wird die Frequenz $f = \SI{60}{\hertz}$ verwendet. Dort könnte der Motor eingesetzt werden.
+
+\end{document}
